@@ -1,0 +1,67 @@
+{extends file="../templates/main.html"}
+
+{block name=footer}Sample footer content integrated into the main template from the calculator template{/block}
+
+{block name=content}
+
+<h2 class="content-head is-center">Simple Loan Calculator</h2>
+
+<div class="pure-g">
+	<div class="l-box-lrg pure-u-1 pure-u-med-2-5">
+		<form class="pure-form pure-form-stacked" action="{$app_url}/app/calc.php" method="post">
+			<fieldset>
+				<label for="x">Loan Amount:</label>
+				<input id="x" type="text" placeholder="Amount" name="x" value="{$form['x']}">
+
+				<label for="y">Loan Term (in years):</label>
+				<input id="y" type="text" placeholder="Term" name="y" value="{$form['y']}">
+
+				<label for="z">Interest Rate (%):</label>
+				<input id="z" type="text" placeholder="Rate" name="z" value="{$form['z']}">
+
+				<button type="submit" class="pure-button">Calculate</button>
+			</fieldset>
+		</form>
+	</div>
+
+	<div class="l-box-lrg pure-u-1 pure-u-med-3-5">
+
+		{* Display a list of errors if any *}
+		{if isset($messages)}
+		{if count($messages) > 0}
+		<h4>Errors Detected: </h4>
+		<ol class="err">
+			{foreach $messages as $msg}
+			{strip}
+			<li>{$msg}</li>
+			{/strip}
+			{/foreach}
+		</ol>
+		{/if}
+		{/if}
+
+		{* Display a list of information if any *}
+		{if isset($infos)}
+		{if count($infos) > 0}
+		<h4>Information: </h4>
+		<ol class="inf">
+			{foreach $infos as $msg}
+			{strip}
+			<li>{$msg}</li>
+			{/strip}
+			{/foreach}
+		</ol>
+		{/if}
+		{/if}
+
+		{if isset($result)}
+		<h4>Result</h4>
+		<p class="res">
+			{$result}
+		</p>
+		{/if}
+
+	</div>
+</div>
+
+{/block}
