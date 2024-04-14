@@ -1,57 +1,70 @@
 <?php
-require_once dirname(__FILE__) . '/../config.php';
+// KONTROLER strony kalkulatora
+require_once dirname(__FILE__).'/../config.php';
 
+// W kontrolerze niczego nie wysyła się do klienta.
+// Wysłaniem odpowiedzi zajmie się odpowiedni widok.
+// Parametry do widoku przekazujemy przez zmienne.
 
-include _ROOT_PATH . '/app/security/check.php';
+// 1. pobranie parametrów
 
-// Assuming user role is stored in session variable like $_SESSION['role']
-// Default to 'user' if not set
-$userRole = isset($_SESSION['role']) ? $_SESSION['role'] : 'user';
-$isAdmin = ($userRole === 'admin'); // Check if the user is an admin
+$x = $_REQUEST ['x'];
+$y = $_REQUEST ['y'];
+$z = $_REQUEST ['z'];
 
-function getParams(&$amount, &$years, &$interestRate)
-{
-	$amount = isset($_REQUEST['amount']) ? $_REQUEST['amount'] : null;
-	$years = isset($_REQUEST['years']) ? $_REQUEST['years'] : null;
-	$interestRate = isset($_REQUEST['interestRate']) ? $_REQUEST['interestRate'] : null;
+// 2. walidacja parametrów z przygotowaniem zmiennych dla widoku
+
+// sprawdzenie, czy parametry zostały przekazane
+if ( ! (isset($x) && isset($y) && isset($z) )) {
+	//sytuacja wystąpi kiedy np. kontroler zostanie wywołany bezpośrednio - nie z formularza
+	$messages [] = 'Błędne wywołanie aplikacji. Brak jednego z parametrów.';
 }
 
-function validate(&$amount, &$years, &$interestRate, &$messages, $isAdmin)
-{
-	if (!isset($amount) || !isset($years) || !isset($interestRate)) {
-		return false;
-	}
-	if (!is_numeric($amount)) {
-		$messages[] = 'The loan amount must be a number.';
-	} elseif ($amount > 100000 && !$isAdmin) {
-		$messages[] = 'As a regular user, you can select a loan amount up to $100,000.';
-	}
-	if (!is_numeric($years) || $years <= 0) {
-		$messages[] = 'The loan term must be a positive number.';
-	}
-	if (!is_numeric($interestRate) || $interestRate <= 0) {
-		$messages[] = 'The interest rate must be a positive number.';
-	}
-	if (count($messages)) return false;
-	else return true;
+// sprawdzenie, czy potrzebne wartości zostały przekazane
+if ( $x == "") {
+	$messages [] = 'Nie podano kwoty.';
+}
+if ( $y == "") {
+	$messages [] = 'Nie podano liczby lat okresu kredytowania.';
+}
+if ( $z == "") {
+    $messages [] = 'Nie podano oprocentowania.';
 }
 
-function process(&$amount, &$years, &$interestRate, &$messages, &$result)
-{
-	$monthlyInterestRate = $interestRate / 12 / 100;
-	$numberOfPayments = $years * 12;
-	$result = $amount * $monthlyInterestRate / (1 - pow((1 + $monthlyInterestRate), -$numberOfPayments));
+//nie ma sensu walidować dalej gdy brak parametrów
+if (empty( $messages )) {
+	
+	// sprawdzenie, czy $x i $y i $z są liczbami całkowitymi
+	if (! is_numeric( $x )) {
+		$messages [] = 'Pierwsza wartość nie jest liczbą całkowitą';
+	}
+	
+	if (! is_numeric( $y )) {
+		$messages [] = 'Druga wartość nie jest liczbą całkowitą';
+	}
+
+    if (! is_numeric( $z )) {
+        $messages [] = 'Błędnie podane oprocentowanie';
+    }
 }
 
-$amount = null;
-$years = null;
-$interestRate = null;
-$result = null;
-$messages = array();
+// 3. wykonaj zadanie jeśli wszystko w porządku
 
-getParams($amount, $years, $interestRate);
-if (validate($amount, $years, $interestRate, $messages, $isAdmin)) {
-	process($amount, $years, $interestRate, $messages, $result);
+if (empty ( $messages )) { // gdy brak błędów
+	
+	//konwersja parametrów na int
+	$x = intval($x);
+	$y = intval($y);
+    $z = intval($z);
+	
+	//wykonanie operacji
+    $operation = ($x * (($z / 100) / 12) * ((1 + (($z / 100) / 12)) ** ($y * 12))) / (((( 1 + ($z / 12 / 100)) ** ($y * 12))) - 1);
+    //zaokraglenie do 2 liczb po przecinku
+    $temp = $operation;
+    $result = number_format($temp, 2, '.','');
 }
 
+// 4. Wywołanie widoku z przekazaniem zmiennych
+// - zainicjowane zmienne ($messages,$x,$y,$operation,$result)
+//   będą dostępne w dołączonym skrypcie
 include 'calc_view.php';

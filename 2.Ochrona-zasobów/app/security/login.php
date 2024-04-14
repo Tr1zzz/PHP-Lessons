@@ -1,4 +1,5 @@
 <?php
+
 require_once dirname(__FILE__) . '/../../config.php';
 
 //pobranie parametrów
@@ -58,9 +59,7 @@ if (!validateLogin($form, $messages)) {
 	include _ROOT_PATH . '/app/security/login_view.php';
 } else {
 	//ok przekieruj lub "forward" na stronę główną
-
-	//redirect - przeglądarka dostanie ten adres do "przejścia" na niego (wysłania kolejnego żądania)
-	header("Location: " . _APP_URL);
+	include _ROOT_PATH . '/app/calc_view.php';
 
 	//"forward"
 	//include _ROOT_PATH.'/index.php';
