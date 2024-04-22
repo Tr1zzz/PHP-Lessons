@@ -1,0 +1,259 @@
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/* -- BASE STYLES -- */
+body {
+    line-height: 1.7em;
+    color: #E0E0E0;
+    /* Light grey for better readability on dark background */
+    font-size: 13px;
+    background-color: #121212;
+    /* Dark background */
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+label {
+    color: #32CD32;
+    /* Neon green for headings and labels */
+}
+
+.pure-img-responsive {
+    max-width: 100%;
+    height: auto;
+}
+
+/* -- LAYOUT STYLES -- */
+.l-box {
+    padding: 1em;
+    background-color: #1E1E1E;
+    /* Slightly lighter dark background for box */
+}
+
+.l-box-lrg {
+    padding: 2em;
+    border-bottom: 1px solid #333;
+    /* Dark border for separation */
+}
+
+.is-center {
+    text-align: center;
+}
+
+/* -- PURE FORM STYLES -- */
+.pure-form label {
+    margin: 1em 0 0;
+    font-weight: bold;
+    font-size: 100%;
+    color: #ADFF2F;
+    /* Light neon green for form labels */
+}
+
+.pure-form input[type] {
+    border: 2px solid #32CD32;
+    /* Neon green border */
+    box-shadow: none;
+    font-size: 100%;
+    width: 100%;
+    margin-bottom: 1em;
+    background-color: #222;
+    /* Dark input fields */
+    color: #E0E0E0;
+    /* Light grey text */
+}
+
+/* -- PURE BUTTON STYLES -- */
+.pure-button {
+    background-color: #32CD32;
+    /* Neon green buttons */
+    color: white;
+    padding: 0.5em 2em;
+    border-radius: 5px;
+}
+
+a.pure-button-primary {
+    background: #32CD32;
+    /* Neon green primary button */
+    color: white;
+    border-radius: 5px;
+    font-size: 120%;
+}
+
+/* -- MENU STYLES -- */
+.home-menu {
+    padding: 0.5em;
+    text-align: center;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.10);
+}
+
+.home-menu.pure-menu-open {
+    background: #111;
+    /* Dark menu background */
+}
+
+.home-menu .pure-menu-heading {
+    color: #32CD32;
+    /* Neon green menu heading */
+}
+
+.home-menu .pure-menu-selected a {
+    color: white;
+}
+
+.home-menu a {
+    color: #32CD32;
+    /* Neon green menu links */
+}
+
+.home-menu li a:hover,
+.home-menu li a:focus {
+    background: none;
+    border: none;
+    color: #AECFE5;
+    /* Lighter neon green on hover/focus */
+}
+
+.home-menu li {
+    margin-left: 10px;
+    /* Adjust as needed for spacing between menu items */
+}
+
+/* -- SPLASH STYLES -- */
+.splash-container {
+    background: #32CD32;
+    /* Dark splash background */
+    z-index: 1;
+    position: fixed !important;
+    overflow: hidden;
+    width: 100%;
+    height: 88%;
+    top: 0;
+    left: 0;
+    
+}
+
+.splash {
+    width: 80%;
+    height: 50%;
+    margin: auto;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.splash-head {
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    border: 3px solid white;
+    /* Neon green border for splash head */
+    padding: 1em 1.6em;
+    font-weight: 100;
+    border-radius: 5px;
+    line-height: 1em;
+}
+
+.splash-subhead {
+    color: white;
+    /* Light grey splash subhead */
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+}
+
+/* -- CONTENT STYLES -- */
+.content-wrapper {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    min-height: 12%;
+    z-index: 2;
+    background: white;
+    /* Dark content background */
+}
+
+.content-head {
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 2em 0 1em;
+    color: #32CD32;
+    /* Neon green content head */
+}
+
+.content-subhead {
+    color: #32CD32;
+    /* Adjusted for neon green accent */
+}
+
+.content-subhead i {
+    margin-right: 7px;
+}
+
+
+.ribbon {
+    background: #2d3e50;
+    color: #32CD32;
+}
+
+
+.footer {
+    background: #111;
+    color: #E0E0E0;
+}
+
+/* -- TABLET (AND UP) MEDIA QUERIES -- */
+@media (min-width: 48em) {
+    body {
+        font-size: 16px;
+    }
+    .home-menu li a {
+            font-size: 1rem;
+            /* Adjust size as needed */
+        }
+    .content {
+        padding: 1em;
+    }
+
+    .home-menu {
+        text-align: left;
+    }
+
+   .home-menu ul {
+       margin: 0;
+       padding: 0;
+       list-style: none;
+       display: flex;
+       justify-content: flex-end;
+   }
+
+    .splash {
+        width: 50%;
+        height: 50%;
+    }
+
+    .splash-head {
+        font-size: 250%;
+    }
+
+    .l-box-lrg {
+        border: none;
+    }
+}
+
+/* -- DESKTOP (AND UP) MEDIA QUERIES -- */
+@media (min-width: 78em) {
+    .splash-head {
+        font-size: 300%;
+    }
+}
