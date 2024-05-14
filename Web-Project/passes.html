@@ -1,0 +1,133 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>GymFlex - Passes</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+</head>
+
+<body class="is-preload">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <header id="header" class="alt">
+            <h1><a href="index.html">GymFlex</a></h1>
+            <nav>
+                <a href="#menu">Menu</a>
+                <a href="index.html" class="button">Back to Home</a>
+            </nav>
+        </header>
+
+        <!-- Menu -->
+        <nav id="menu">
+            <div class="inner">
+                <h2>Menu</h2>
+                <ul class="links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="trainer_gallery.html">Trainers</a></li>
+                    <li><a href="booking.html">Book Classes</a></li>
+                    <li><a href="manage_classes.html">Manage Classes</a></li>
+                    <li><a href="passes.html">Passes</a></li>
+                    <li><a href="staff_passes.html">Staff Passes</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                </ul>
+                <a href="#" class="close">Close</a>
+            </div>
+        </nav>
+        <!-- Main Content -->
+        <section id="passes" class="wrapper alt style2">
+            <div class="inner">
+                <h2 class="major">Choose Your Pass</h2>
+                <p>Select the best gym pass for your lifestyle and start your fitness journey today.</p>
+                <div class="features">
+                    <article>
+                        <span class="icon solid fa-sun"></span>
+                        <h3 class="major">Day Pass</h3>
+                        <p>Access until 4 PM. Perfect for daytime fitness enthusiasts.</p>
+                        <p><strong>Price: $30/month</strong><br>Duration: 1 month</p>
+                        <ul class="actions">
+                            <li><button class="button" onclick="addToCart('Day Pass', 30)">Add to Cart</button></li>
+                        </ul>
+                    </article>
+                    <article>
+                        <span class="icon solid fa-moon"></span>
+                        <h3 class="major">Night Pass</h3>
+                        <p>Access from 9 PM to 6 AM. Ideal for night owls.</p>
+                        <p><strong>Price: $25/month</strong><br>Duration: 1 month</p>
+                        <ul class="actions">
+                            <li><button class="button" onclick="addToCart('Night Pass', 25)">Add to Cart</button></li>
+                        </ul>
+                    </article>
+                    <article>
+                        <span class="icon solid fa-clock"></span>
+                        <h3 class="major">24-Hour Pass</h3>
+                        <p>Unlimited access anytime. For those with flexible schedules.</p>
+                        <p><strong>Price: $50/month</strong><br>Duration: 1 month</p>
+                        <ul class="actions">
+                            <li><button class="button" onclick="addToCart('24-Hour Pass', 50)">Add to Cart</button></li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <h2 class="major">Get in touch</h2>
+                <p>Join us today and transform your life. For more information or to book a class, contact us:</p>
+                <ul class="contact">
+                    <li class="icon solid fa-home">GymFlex<br />123 Fitness St, Wellness City, 90000</li>
+                    <li class="icon solid fa-phone">(123) 456-7890</li>
+                    <li class="icon solid fa-envelope"><a href="mailto:contact@gymflex.com">contact@gymflex.com</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Notification -->
+    <div id="cart-notification"
+        style="display: none; position: fixed; bottom: 10px; left: 10px; background-color: green; color: white; padding: 10px; border-radius: 5px;">
+        Added to cart!
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        let cart = [];
+
+        function addToCart(passType, price) {
+            cart.push({ passType, price });
+            localStorage.setItem('cart', JSON.stringify(cart));
+
+            // Show notification
+            const notification = document.getElementById('cart-notification');
+            notification.style.display = 'block';
+            setTimeout(() => {
+                notification.style.display = 'none';
+            }, 2000);
+
+            console.log(`${passType} has been added to your cart.`);
+        }
+
+        // Load cart from localStorage on page load
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const storedCart = localStorage.getItem('cart');
+            if (storedCart) {
+                cart = JSON.parse(storedCart);
+            }
+        });
+    </script>
+</body>
+
+</html>

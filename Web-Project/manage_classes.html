@@ -1,0 +1,117 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>GymFlex - Manage Classes</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+</head>
+
+<body class="is-preload">
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <header id="header" class="alt">
+            <h1><a href="index.html">GymFlex</a></h1>
+            <nav>
+                <a href="#menu">Menu</a>
+                <a href="index.html" class="button">Back to Home</a>
+            </nav>
+        </header>
+
+        <!-- Menu -->
+        <nav id="menu">
+            <div class="inner">
+                <h2>Menu</h2>
+                <ul class="links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="trainer_gallery.html">Trainers</a></li>
+                    <li><a href="booking.html">Book Classes</a></li>
+                    <li><a href="manage_classes.html">Manage Classes</a></li>
+                    <li><a href="passes.html">Passes</a></li>
+                    <li><a href="staff_passes.html">Staff Passes</a></li>
+                    <li><a href="cart.html">Cart</a></li>
+                    <li><a href="login.html">Log In</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                </ul>
+                <a href="#" class="close">Close</a>
+            </div>
+        </nav>
+
+        <!-- Main -->
+        <section id="wrapper">
+            <section class="wrapper spotlight style1">
+                <div class="inner">
+                    <div class="content">
+                        <h2 class="major">Manage Classes</h2>
+                        <p>Add and manage classes offered at GymFlex.</p>
+                        <form method="post" action="manage_classes.php">
+                            <div class="fields">
+                                <div class="field">
+                                    <label for="class-name">Class Name</label>
+                                    <input type="text" name="class-name" id="class-name" required />
+                                </div>
+                                <div class="field">
+                                    <label for="class-description">Description</label>
+                                    <textarea name="class-description" id="class-description" rows="4"
+                                        required></textarea>
+                                </div>
+                                <div class="field">
+                                    <label for="class-time">Time</label>
+                                    <input type="text" name="class-time" id="class-time" required />
+                                </div>
+                            </div>
+                            <ul class="actions">
+                                <li><input type="submit" value="Add Class" class="primary" /></li>
+                            </ul>
+                        </form>
+                        <hr>
+                        <h3>Existing Classes</h3>
+                        <div id="existing-classes">
+                            <!-- list of future classes should load dynamically -->
+                            <ul>
+                                <!-- Example -->
+                                <li>Yoga - Monday 7:00 AM <button>Edit</button> <button>Delete</button></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <h2 class="major">Get in touch</h2>
+                <p>Join us today and transform your life. For more information or to book a class, contact us:</p>
+                <ul class="contact">
+                    <li class="icon solid fa-home">
+                        GymFlex<br />
+                        123 Fitness St, Wellness City, 90000
+                    </li>
+                    <li class="icon solid fa-phone">(123) 456-7890</li>
+                    <li class="icon solid fa-envelope"><a href="mailto:contact@gymflex.com">contact@gymflex.com</a></li>
+                </ul>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>

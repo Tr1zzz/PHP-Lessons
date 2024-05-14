@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>GymFlex - Cart</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="assets/css/noscript.css" />
+    </noscript>
+</head>
+
+<body class="is-preload">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <header id="header" class="alt">
+            <h1><a href="index.html">GymFlex</a></h1>
+            <nav>
+                <a href="#menu">Menu</a>
+                <a href="index.html" class="button">Back to Home</a>
+            </nav>
+        </header>
+
+        <!-- Menu -->
+        <nav id="menu">
+            <div class="inner">
+                <h2>Menu</h2>
+                <ul class="links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="trainer_gallery.html">Trainers</a></li>
+                <li><a href="booking.html">Book Classes</a></li>
+                <li><a href="manage_classes.html">Manage Classes</a></li>
+                <li><a href="passes.html">Passes</a></li>
+                <li><a href="staff_passes.html">Staff Passes</a></li>
+                <li><a href="cart.html">Cart</a></li>
+                <li><a href="login.html">Log In</a></li>
+                <li><a href="signup.html">Sign Up</a></li>
+                </ul>
+                <a href="#" class="close">Close</a>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <section class="wrapper alt style2">
+            <div class="inner">
+                <h2 class="major">Your Cart</h2>
+                <div id="cart-contents">
+                    <!-- Cart loading dynamically -->
+                </div>
+                <ul class="actions">
+                    <li><button class="button primary" onclick="checkout()">Proceed to Checkout</button></li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <h2 class="major">Get in touch</h2>
+                <p>Join us today and transform your life. For more information or to book a class, contact us:</p>
+                <ul class="contact">
+                    <li class="icon solid fa-home">GymFlex<br />123 Fitness St, Wellness City, 90000</li>
+                    <li class="icon solid fa-phone">(123) 456-7890</li>
+                    <li class="icon solid fa-envelope"><a href="mailto:contact@gymflex.com">contact@gymflex.com</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery.scrollex.min.js"></script>
+    <script src="assets/js/browser.min.js"></script>
+    <script src="assets/js/breakpoints.min.js"></script>
+    <script src="assets/js/util.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        function renderCart() {
+            const cartContainer = document.getElementById('cart-contents');
+            cartContainer.innerHTML = '';
+
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.price;
+                cartContainer.innerHTML += `
+                    <div class="cart-item">
+                        <span>${item.passType}</span>
+                        <span>$${item.price}</span>
+                        <span>
+                            <button onclick="removeFromCart(${index})">Remove</button>
+                        </span>
+                    </div>
+                `;
+            });
+
+            cartContainer.innerHTML += `<div class="cart-total">Total: $${total}</div>`;
+        }
+
+        function removeFromCart(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        function checkout() {
+            alert('Proceeding to checkout...');
+            // Need logical function of proceeding to checkout
+        }
+
+        
+        document.addEventListener('DOMContentLoaded', (event) => {
+            renderCart();
+        });
+    </script>
+</body>
+
+</html>
