@@ -1,0 +1,44 @@
+{extends file = "defaultforall.html"}
+{block name=content}
+<!-- Main Content -->
+<section id="passes" class="wrapper alt style2">
+    <div class="inner">
+        <h2 class="major">Choose Your Pass</h2>
+        <p>Select the best gym pass for your lifestyle and start your fitness journey today.</p>
+        <div class="features">
+            <article>
+                <span class="icon solid fa-sun"></span>
+                <h3 class="major">Day Pass</h3>
+                <p>{$day.description}</p>
+                <p><strong>Price: ${$day.price}/month</strong><br>Duration: {$day.duration} month</p>
+                <ul class="actions">
+                    <li><button class="button" onclick="addToCart('{$day.name}', '{$day.price}', '{$day.id_type}')">Add
+                            to Cart</button></li>
+                </ul>
+            </article>
+            <article>
+                <span class="icon solid fa-moon"></span>
+                <h3 class="major">Night Pass</h3>
+                <p>{$night.description}</p>
+                <p><strong>Price: ${$night.price}/month</strong><br>Duration: {$night.duration} month</p>
+                <ul class="actions">
+                    <li><button class="button"
+                            onclick="addToCart('{$night.name}', '{$night.price}', '{$night.id_type}')">Add to
+                            Cart</button></li>
+                </ul>
+            </article>
+            <article>
+                <span class="icon solid fa-clock"></span>
+                <h3 class="major">24-Hour Pass</h3>
+                <p>{$forall.description}</p>
+                <p><strong>Price: ${$forall.price}/month</strong><br>Duration: {$forall.duration} month</p>
+                <ul class="actions">
+                    <li><button class="button"
+                            onclick="addToCart('{$forall.name}', '{$forall.price}', '{$forall.id_type}')">Add to
+                            Cart</button></li>
+                </ul>
+            </article>
+        </div>
+    </div>
+</section>
+{/block}

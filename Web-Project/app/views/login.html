@@ -1,0 +1,30 @@
+{extends file = "defaultforall.html"}
+{block name=content}
+        <!-- Main -->
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <!-- Form -->
+                    <section>
+                        <h2 class="major">Log In</h2>
+                        <form method="post" action="{url action = "login"}">
+                            <div class="fields">
+                                <div class="field">
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" id="username" required />
+                                </div>
+                                <div class="field">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" id="password" required />
+                                </div>
+                            </div>
+                            <ul class="actions">
+                                <li><input type="submit" value="Log In" class="primary" /></li>
+                            </ul>
+                        </form>
+                    </section>
+                </div>
+            </section>
+        </div>
+
+    {/block}

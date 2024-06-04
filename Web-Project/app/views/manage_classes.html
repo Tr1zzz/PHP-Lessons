@@ -1,0 +1,51 @@
+{extends file="defaultforall.html"}
+
+{block name=content}
+<!-- Main -->
+<section id="wrapper">
+    <section class="wrapper spotlight style1">
+        <div class="inner">
+            <div class="content">
+                <h2 class="major">Manage Classes</h2>
+                <p>Add and manage classes offered at GymFlex.</p>
+
+                {if isset($msgs)}
+                <ul>
+                    {foreach $msgs as $msg}
+                    <li>{$msg}</li>
+                    {/foreach}
+                </ul>
+                {/if}
+
+                <form method="post" action="{url action='manage_classes'}">
+                    <div class="fields">
+                        <div class="field">
+                            <label for="name">Class Name</label>
+                            <input type="text" name="name" id="name" />
+                        </div>
+                        <div class="field">
+                            <label for="class-time">Time</label>
+                            <input type="datetime-local" name="time" id="time" />
+                        </div>
+                    </div>
+                    <ul class="actions">
+                        <li><input type="submit" value="Add Class" class="primary" /></li>
+                    </ul>
+                </form>
+                <hr>
+                <h3>Existing Classes</h3>
+                <form method="post" action="{url action='delete_service'}">
+                    <ul>
+                        {foreach $services as $service}
+                        <li>
+                            {$service.name} - {$service.time}
+                            <button type="submit" name="delete" value="{$service.id_service}">Delete</button>
+                        </li>
+                        {/foreach}
+                    </ul>
+                </form>
+            </div>
+        </div>
+    </section>
+</section>
+{/block}

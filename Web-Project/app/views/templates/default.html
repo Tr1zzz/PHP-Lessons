@@ -1,0 +1,83 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>{$title}</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{$conf}/../app/views/templates/assets/css/main.css" />
+    <noscript>
+        <link rel="stylesheet" href="{$conf}/../app/views/templates/assets/css/noscript.css" />
+    </noscript>
+</head>
+
+<body class="is-preload">
+
+    <!-- Page Wrapper -->
+    <div id="page-wrapper">
+
+        <!-- Header -->
+        <header id="header" class="alt">
+            <h1><a href="{url action='index'}">GymFlex</a></h1>
+            <nav>
+                <a href="#menu">Menu</a>
+                <a href="{url action='cart_display'}" class="button">Cart</a>
+                {if $isUser == null && $isWorker == null && $isAdmin == null}
+                <a href="{url action='login_display'}" class="button">Log In</a>
+                <a href="{url action='singup_display'}" class="button">Sign Up</a>
+                {else}
+                <a href="{url action='logout'}" class="button">Log Out</a>
+                {/if}
+            </nav>
+        </header>
+        
+        <!-- Menu -->
+        <nav id="menu">
+            <div class="inner">
+                <h2>Menu</h2>
+                <ul class="links">
+                    <li><a href="{url action='index'}">Home</a></li>
+                    <li><a href="{url action='trainer_gallery'}">Trainers</a></li>
+                    <li><a href="{url action='booking_display'}">Book Classes</a></li>
+                    <li><a href="{url action='passes_display'}">Passes</a></li>
+                    {if $isWorker||$isAdmin}
+                    <li><a href="{url action='manage_classes_display'}">Manage Classes</a></li>
+                    <li><a href="{url action='staff_passes_display'}">Staff Passes</a></li>
+                    <li><a href="{url action='roles_display'}">Roles</a></li>
+                    {/if}
+                </ul>
+                <a href="#" class="close">Close</a>
+            </div>
+        </nav>
+
+        {block name = 'content'} {/block}
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <h2 class="major">Get in touch</h2>
+                <p>Join us today and transform your life. For more information or to book a class, contact us:</p>
+                <ul class="contact">
+                    <li class="icon solid fa-home">
+                        GymFlex<br />
+                        123 Fitness St, Wellness City, 90000
+                    </li>
+                    <li class="icon solid fa-phone">(123) 456-7890</li>
+                    <li class="icon solid fa-envelope"><a href="mailto:contact@gymflex.com">contact@gymflex.com</a></li>
+                </ul>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Scripts -->
+    <script src="{$conf}/../app/views/templates/assets/js/jquery.min.js"></script>
+    <script src="{$conf}/../app/views/templates/assets/js/jquery.scrollex.min.js"></script>
+    <script src="{$conf}/../app/views/templates/assets/js/browser.min.js"></script>
+    <script src="{$conf}/../app/views/templates/assets/js/breakpoints.min.js"></script>
+    <script src="{$conf}/../app/views/templates/assets/js/util.js"></script>
+    <script src="{$conf}/../app/views/templates/assets/js/main.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+{extends file = "defaultforall.html"}
+{block name=content}
+<!-- Main Content -->
+<section id="passes" class="wrapper alt style2">
+    <div class="inner">
+        <h2 class="major">Manage Passes</h2>
+        <form method="post" action="{url action='edit_pass'}">
+            <div class="field">
+                <label for="pass_type">Select Pass Type:</label>
+                <select name="pass_type" id="pass_type">
+                    <option value="1">Day Pass</option>
+                    <option value="2">Night Pass</option>
+                    <option value="3">24-Hour Pass</option>
+                </select>
+            </div>
+            <div class="field half">
+                <label for="description">Description:</label>
+                <input type="text" name="description" id="description" required>
+            </div>
+            <div class="field half">
+                <label for="price">Price:</label>
+                <input type="number" name="price" id="price" required>
+            </div>
+            <div class="field half">
+                <label for="duration">Duration (months):</label>
+                <input type="number" name="duration" id="duration" required>
+            </div>
+            <ul class="actions">
+                <li><input type="submit" value="Update Pass" class="primary" /></li>
+            </ul>
+        </form>
+    </div>
+</section>
+{/block}

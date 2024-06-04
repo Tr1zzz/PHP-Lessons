@@ -1,0 +1,31 @@
+{extends file = "defaultforall.html"}
+{block name=content}
+
+    <!-- Main -->
+    <section id="wrapper">
+        <section class="wrapper spotlight style1">
+            <div class="inner">
+                <div class="content">
+                    <h2 class="major">Available Classes</h2>
+                    <p>Select and book your preferred classes.</p>
+                    <div id="class-list">
+                        <form method="post" action="{url action = "booking"}">
+                            <div class="field">
+                                <label for="class-select">Choose a Class:</label>
+                                <select name="class-select" id="class-select">
+                                    {foreach $services as $service}
+                                    <option value="{$service.id_service}">{$service.name} - {$service.time}</option>
+                                    {/foreach}
+                                </select>
+                            </div>
+                            <ul class="actions">
+                                <li><input type="submit" value="Book Class" class="primary" /></li>
+                            </ul>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+        {/block}

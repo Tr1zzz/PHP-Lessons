@@ -1,0 +1,45 @@
+{extends file = "defaultforall.html"}
+{block name=content}
+        <!-- Main -->
+        <div id="main">
+            <section class="wrapper style1">
+                <div class="inner">
+                    <!-- Form -->
+                    <section>
+                        <h2 class="major">Sign Up</h2>
+                        <form method="post" action="{url action = "singup"}"> 
+                            <div class="fields">
+                                <div class="field">
+                                    <label for="username">Username</label>
+                                    <input type="text" name="username" id="username" required />
+                                </div>
+                                <div class="field">
+                                    <label for="username">First name</label>
+                                    <input type="text" name="firstName" id="firstName" required />
+                                </div>
+                                <div class="field">
+                                    <label for="username">Last name</label>
+                                    <input type="text" name="lastName" id="lastName" required />
+                                </div>
+                                <div class="field">
+                                    <label for="username">Phone number</label>
+                                    <input type="tel" name="phoneNumber" id="phoneNumber" required />
+                                </div>
+                                <div class="field">
+                                    <label for="password">Password</label>
+                                    <input type="password" name="password" id="password" required />
+                                </div>
+                                <div class="field">
+                                    <label for="confirm-password">Confirm Password</label>
+                                    <input type="password" name="confirm-password" id="confirm-password" required />
+                                </div>
+                            </div>
+                            <ul class="actions">
+                                <li><input type="submit" value="Sign Up" class="primary" /></li>
+                            </ul>
+                        </form>
+                    </section>
+                </div>
+            </section>
+        </div>
+{/block}

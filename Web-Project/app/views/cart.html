@@ -1,0 +1,27 @@
+{extends file = "defaultforall.html"}
+{block name=content}
+<section id="cart" class="wrapper alt style2">
+    <div class="inner">
+        <h2 class="major">Your Cart</h2>
+        <p>Review the items in your cart and proceed to checkout.</p>
+        <ul>
+            {foreach $cart as $item}
+            <li>
+                {$item.name} - ${$item.price}
+                <button class="remove-item" data-id="{$item.id_type}" onclick="removeFromCart(this)">Remove</button>
+            </li>
+            {/foreach}
+        </ul>
+        <p>Total: $<span id="total">
+                {assign var="total" value=0}
+                {foreach $cart as $item}
+                {assign var="total" value=$total + $item.price}
+                {/foreach}
+                {$total}
+            </span></p>
+        <ul class="actions">
+            <li><button class="button" onclick="checkout()">Proceed to Checkout</button></li>
+        </ul>
+    </div>
+</section>
+{/block}
